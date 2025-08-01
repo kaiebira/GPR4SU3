@@ -4,7 +4,7 @@ from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel, WhiteKernel
 from sklearn.preprocessing import StandardScaler
 
-# Import functions from your project's toolkit
+# latqcdtools imports
 from latqcdtools.base.readWrite import readTable
 from latqcdtools.physics.lattice_params import latticeParams
 from latqcdtools.base.printErrorBars import get_err_str
@@ -12,7 +12,6 @@ import latqcdtools.base.logger as logger
 
 # --- Configuration ---
 # Define which Nt values and their corresponding Ns values to load.
-# This is based on the files you've uploaded.
 DATA_TO_LOAD = {
     6: [18],
     8: [24],
@@ -171,7 +170,7 @@ logger.info(f"--- Final Results (Tc for each (Nt, Ns) pair from training data) -
 for (nt_val, ns_val), result in final_Tc_results.items():
     logger.info(f"Nt={nt_val}, Ns={ns_val}: Tc = {get_err_str(result['Tc'], result['Tc_err'])} MeV")
 
-# --- MODIFIED SECTION: Surrogate Simulation for Nt=20, Ns=140 with Tc Uncertainty ---
+
 logger.info("--- Performing surrogate simulation for Nt=20, Ns=140 (with Tc uncertainty) ---")
 
 predict_Nt = 20
